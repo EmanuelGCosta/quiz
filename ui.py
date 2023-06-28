@@ -1,5 +1,6 @@
 from tkinter import *
 from quiz_brain import QuizBrain
+from time import sleep
 
 THEME_COLOR = "#375362"
 
@@ -9,7 +10,7 @@ class QuizInterface:
     def __init__(self, quiz_brain: QuizBrain):
         self.quiz = quiz_brain
         self.window = Tk()
-        self.window.title("Quizzler")
+        self.window.title("Quiz")
         self.window.config(bg=THEME_COLOR)
         self.window.config(pady=20, padx=20)
 
@@ -40,6 +41,8 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
+        self.button_true.config(state="active")
+        self.button_false.config(state="active")
         self.canvas.config(bg="white")
         if self.quiz.still_has_questions():
             self.label_score.config(text=f"Score: {self.quiz.score}")
@@ -48,19 +51,24 @@ class QuizInterface:
 
         else:
             self.label_score.destroy()
-            self.canvas.itemconfig(self.question_text, text=f"Quiz concluído\npontos: {self.quiz.score}/{self.quiz.question_number}")
+            self.canvas.itemconfig(self.question_text, text=f"Quiz concluído\nPontos: {self.quiz.score}/{self.quiz.question_number}")
             self.button_true.config(state="disabled")
             self.button_false.config(state="disabled")
 
     def true_button(self):
+        self.button_true.config(state="disabled")
         self.feedback(self.quiz.check_answer("true"))
 
+
     def false_button(self):
+        self.button_false.config(state="disabled")
         self.feedback(self.quiz.check_answer("false"))
+
 
     def feedback(self, resposta):
         if resposta:
             self.canvas.config(bg="green")
         else:
             self.canvas.config(bg="red")
-        self.window.after(1000, self.get_next_question)
+
+        self.window.after(500, self.get_next_question)
