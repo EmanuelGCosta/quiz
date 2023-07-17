@@ -5,7 +5,7 @@
 </p>
 
 # Descrição do Projeto
->Nesse simples quiz, é apresentado uma série de perguntas aleatórias verdadeiras ou falsas para o usuário e fornece feedback imediato sobre suas respostas. As perguntas são obtidas de uma API online e exibidas usando uma interface gráfica do usuário construída com Tkinter.
+>Nesse simples quiz, é apresentado uma série de perguntas aleatórias verdadeiras ou falsas para o usuário e fornece feedback imediato sobre suas respostas. As perguntas são obtidas de uma API online e exibidas usando uma interface gráfica construída com Tkinter.
 
 <div align="center">
     <p>
